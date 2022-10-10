@@ -1,3 +1,7 @@
+const { application } = require("express");
+
+let toDoList = [] // this acts as my faux-database
+
 module.exports = {
 
     getCompliment: (req, res) => {
@@ -19,6 +23,26 @@ module.exports = {
         let randomFortune = fortunes[randomIndex];
       
         res.status(200).send(randomFortune);
+    },
+
+    addList: (req, res) => {
+
+        toDo = {
+            "date": req.body.date,
+            "text": req.body.text
+        }
+
+        toDoList.push(toDo);
+        res.status(200);
+    },
+
+    allList: (req, res) => {
+        res.status(200).send(toDoList);
+    },
+
+    deleteList: (req, res) => {
+        toDoList = [];
+        res.status(200).send("To-do entries deleted.");
     }
 
 }
