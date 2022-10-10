@@ -33,7 +33,7 @@ module.exports = {
         }
 
         toDoList.push(toDo);
-        res.status(200);
+        res.status(200).send("Ok!");
     },
 
     allList: (req, res) => {
